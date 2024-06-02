@@ -46,7 +46,7 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public List<TrainingDto> getCompletedTrainings(Date date) {
-        return trainingRepository.findByEndTimeBefore(date).stream()
+        return trainingRepository.findByEndDateBefore(LocalDate date).stream()
                 .map(trainingMapper::toDto)
                 .collect(Collectors.toList());
     }

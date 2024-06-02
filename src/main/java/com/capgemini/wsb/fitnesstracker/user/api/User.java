@@ -32,6 +32,11 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String email;
+    @Nullable
+    public Long getId() {
+        return id;
+    }
+
 
     public User(
             final String firstName,
@@ -45,10 +50,6 @@ public class User {
         this.email = email;
     }
 
-    @Nullable
-    public Long getId() {
-        return id;
-    }
 
     public void setId(@Nullable Long id) {
         this.id = id;
