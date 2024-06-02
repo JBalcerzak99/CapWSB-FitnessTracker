@@ -1,10 +1,11 @@
 package com.capgemini.wsb.fitnesstracker.training.internal;
 
-import com.capgemini.wsb.fitnesstracker.training.api.TrainingProvider;
-import com.capgemini.wsb.fitnesstracker.user.api.User;
+import com.capgemini.wsb.fitnesstracker.training.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.stream.Collectors;
 
 // TODO: Provide Impl

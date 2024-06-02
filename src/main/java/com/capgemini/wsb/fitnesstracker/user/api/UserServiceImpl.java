@@ -1,8 +1,7 @@
-package com.capgemini.wsb.fitnesstracker.user.internal;
+package com.capgemini.wsb.fitnesstracker.user.api;
 
-import com.capgemini.wsb.fitnesstracker.user.api.User;
-import com.capgemini.wsb.fitnesstracker.user.api.UserNotFoundException;
-import com.capgemini.wsb.fitnesstracker.user.api.UserService;
+import com.capgemini.wsb.fitnesstracker.user.internal.UserMapper;
+import com.capgemini.wsb.fitnesstracker.user.internal.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,28 +21,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> getAllUsers() {
+    public List<com.capgemini.wsb.fitnesstracker.user.internal.UserDto> getAllUsers() {
         return userRepository.findAll().stream()
                 .map(userMapper::toDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public UserDto getUserById(Long id) {
+    public com.capgemini.wsb.fitnesstracker.user.internal.UserDto getUserById(Long id) {
         return userRepository.findById(id)
                 .map(userMapper::toDto)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
     }
 
     @Override
-    public List<UserDto> searchUsersByEmail(String email) {
+    public List<com.capgemini.wsb.fitnesstracker.user.internal.UserDto> searchUsersByEmail(String email) {
         return userRepository.findByEmailContainingIgnoreCase(email).stream()
                 .map(userMapper::toDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<UserDto> searchUsersByAge(Integer age) {
+    public List<com.capgemini.wsb.fitnesstracker.user.internal.UserDto> searchUsersByAge(Integer age) {
         LocalDate thresholdDate = LocalDate.now().minusYears(age);
         return userRepository.findByBirthDateBefore(thresholdDate).stream()
                 .map(userMapper::toDto)
@@ -61,14 +60,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto createUser(UserDto userDto) {
+    public com.capgemini.wsb.fitnesstracker.user.internal.UserDto createUser(com.capgemini.wsb.fitnesstracker.user.internal.UserDto userDto) {
         User user = userMapper.toEntity(userDto);
         userRepository.save(user);
         return userMapper.toDto(user);
     }
 
     @Override
-    public UserDto updateUser(Long id, UserDto userDto) {
+    public com.capgemini.wsb.fitnesstracker.user.internal.UserDto updateUser(Long id, com.capgemini.wsb.fitnesstracker.user.internal.UserDto userDto) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
         userMapper.updateEntityFromDto(userDto, user);
