@@ -62,7 +62,7 @@ public class TrainingServiceImpl implements TrainingService {
     @Override
     public TrainingDto createTraining(TrainingDto trainingDto) {
         User user = userRepository.findById(trainingDto.getUserId())
-                .orElseThrow(() -> new UserNotFoundException("Error");
+                .orElseThrow(() -> new UserNotFoundException("Error"));
         Training training = trainingMapper.toEntity(trainingDto, user);
         trainingRepository.save(training);
         return trainingMapper.toDto(training);
