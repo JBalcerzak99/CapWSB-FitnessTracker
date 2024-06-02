@@ -52,8 +52,10 @@ class InitialDataLoader {
     }
 
     private User generateUser(String name, String lastName, int age) {
-        User user = new User(
-        );
+        User user = new User(name,
+                             lastName,
+                             now().minusYears(age),
+                             "%s.%s@domain.com".formatted(name, lastName));
         return userRepository.save(user);
     }
 

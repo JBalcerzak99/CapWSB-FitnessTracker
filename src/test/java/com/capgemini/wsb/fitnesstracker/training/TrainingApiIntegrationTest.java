@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import static java.time.LocalDate.now;
+import static java.util.UUID.randomUUID;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -182,7 +183,7 @@ class TrainingApiIntegrationTest extends IntegrationTestBase {
     }
 
     private static User generateClient() {
-        return new User();
+        return new User(randomUUID().toString(), randomUUID().toString(), now(), randomUUID().toString());
     }
 
     private static Training generateTraining(User user) throws ParseException {

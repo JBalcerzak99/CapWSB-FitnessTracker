@@ -38,7 +38,11 @@ public class User {
     }
 
 
-    public User() {
+    public User(
+            final String firstName,
+            final String lastName,
+            final LocalDate birthdate,
+            final String email) {
 
         this.firstName = firstName;
         this.lastName = lastName;
