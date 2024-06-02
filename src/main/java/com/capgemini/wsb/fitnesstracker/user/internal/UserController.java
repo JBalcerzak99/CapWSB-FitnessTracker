@@ -1,5 +1,6 @@
 package com.capgemini.wsb.fitnesstracker.user.internal;
 
+import com.capgemini.wsb.fitnesstracker.user.api.UserDto;
 import com.capgemini.wsb.fitnesstracker.user.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

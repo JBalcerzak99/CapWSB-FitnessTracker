@@ -65,16 +65,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public com.capgemini.wsb.fitnesstracker.user.internal.UserDto createUser(com.capgemini.wsb.fitnesstracker.user.internal.UserDto userDto) {
-        return null;
-    }
-
-    @Override
-    public com.capgemini.wsb.fitnesstracker.user.internal.UserDto updateUser(Long id, com.capgemini.wsb.fitnesstracker.user.internal.UserDto userDto) {
-        return null;
-    }
-
-    @Override
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
