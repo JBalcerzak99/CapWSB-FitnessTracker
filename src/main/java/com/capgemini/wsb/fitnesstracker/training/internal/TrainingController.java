@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class TrainingController {
     }
 
     @GetMapping("/completed")
-    public List<TrainingDto> getCompletedTrainings(@RequestParam LocalDate date) {
+    public List<TrainingDto> getCompletedTrainings(@RequestParam Date date) {
         return trainingService.getCompletedTrainings(date);
     }
 
@@ -48,4 +49,5 @@ public class TrainingController {
         return trainingService.updateTraining(id, trainingDto);
     }
 }
+
 

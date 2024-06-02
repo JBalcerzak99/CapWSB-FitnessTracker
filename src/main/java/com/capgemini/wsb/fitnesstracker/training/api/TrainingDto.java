@@ -3,14 +3,16 @@ package com.capgemini.wsb.fitnesstracker.training.api;
 import com.capgemini.wsb.fitnesstracker.training.internal.ActivityType;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class TrainingDto {
     private Long id;
-    private String name;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private ActivityType activityType;
     private Long userId;
+    private Date startTime;
+    private Date endTime;
+    private ActivityType activityType;
+    private double distance;
+    private double averageSpeed;
 
     public Long getId() {
         return id;
@@ -20,28 +22,28 @@ public class TrainingDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public ActivityType getActivityType() {
@@ -52,11 +54,20 @@ public class TrainingDto {
         this.activityType = activityType;
     }
 
-    public Long getUserId() {
-        return userId;
+    public double getDistance() {
+        return distance;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public double getAverageSpeed() {
+        return averageSpeed;
+    }
+
+    public void setAverageSpeed(double averageSpeed) {
+        this.averageSpeed = averageSpeed;
     }
 }
+

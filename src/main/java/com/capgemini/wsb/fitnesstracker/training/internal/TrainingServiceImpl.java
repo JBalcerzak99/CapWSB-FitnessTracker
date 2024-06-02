@@ -1,10 +1,13 @@
 package com.capgemini.wsb.fitnesstracker.training.internal;
 
 import com.capgemini.wsb.fitnesstracker.training.api.*;
+import com.capgemini.wsb.fitnesstracker.user.api.User;
+import com.capgemini.wsb.fitnesstracker.user.internal.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,11 +15,13 @@ import java.util.stream.Collectors;
 @Service
 public class TrainingServiceImpl implements TrainingService {
     private final TrainingRepository trainingRepository;
+    private final UserRepository userRepository;
     private final TrainingMapper trainingMapper;
 
     @Autowired
-    public TrainingServiceImpl(TrainingRepository trainingRepository, TrainingMapper trainingMapper) {
+    public TrainingServiceImpl(TrainingRepository trainingRepository, UserRepository userRepository, TrainingMapper trainingMapper) {
         this.trainingRepository = trainingRepository;
+        this.userRepository = userRepository;
         this.trainingMapper = trainingMapper;
     }
 
@@ -36,7 +41,12 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public List<TrainingDto> getCompletedTrainings(LocalDate date) {
-        return trainingRepository.findByEndDateBefore(date).stream()
+        return null;
+    }
+
+    @Override
+    public List<TrainingDto> getCompletedTrainings(Date date) {
+        return trainingRepository.findByEndTimeBefore(date).stream()
                 .map(trainingMapper::toDto)
                 .collect(Collectors.toList());
     }
@@ -50,7 +60,9 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public TrainingDto createTraining(TrainingDto trainingDto) {
-        Training training = trainingMapper.toEntity(trainingDto);
+        User user = userRepository.findById(trainingDto.getUserId())
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        Training training = trainingMapper.toEntity(trainingDto, user);
         trainingRepository.save(training);
         return trainingMapper.toDto(training);
     }
@@ -64,4 +76,5 @@ public class TrainingServiceImpl implements TrainingService {
         return trainingMapper.toDto(training);
     }
 }
+
 
