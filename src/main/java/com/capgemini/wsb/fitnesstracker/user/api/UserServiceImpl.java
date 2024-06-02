@@ -1,7 +1,7 @@
 package com.capgemini.wsb.fitnesstracker.user.api;
 
 import com.capgemini.wsb.fitnesstracker.user.internal.UserMapper;
-import com.capgemini.wsb.fitnesstracker.user.internal.UserRepository;
+import com.capgemini.wsb.fitnesstracker.user.internal.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> searchUsersByAge(Integer age) {
         LocalDate thresholdDate = LocalDate.now().minusYears(age);
-        return userRepository.findByBirthdateBefore(thresholdDate).stream()
+        return userRepository.findByBirthDateBefore(thresholdDate).stream()
                 .map(userMapper::toDto)
                 .collect(Collectors.toList());
     }

@@ -2,7 +2,8 @@ package com.capgemini.wsb.fitnesstracker.training.internal;
 
 import com.capgemini.wsb.fitnesstracker.training.api.*;
 import com.capgemini.wsb.fitnesstracker.user.api.User;
-import com.capgemini.wsb.fitnesstracker.user.internal.UserRepository;
+import com.capgemini.wsb.fitnesstracker.user.internal.UserNotFoundException;
+import com.capgemini.wsb.fitnesstracker.user.api.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +47,7 @@ public class TrainingServiceImpl implements TrainingService {
 
     @Override
     public List<TrainingDto> getCompletedTrainings(Date date) {
-        return trainingRepository.findByEndDateBefore(LocalDate date).stream()
+        return trainingRepository.findByEndDateBefore(date).stream()
                 .map(trainingMapper::toDto)
                 .collect(Collectors.toList());
     }

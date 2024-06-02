@@ -3,7 +3,7 @@ package com.capgemini.wsb.fitnesstracker.training.api;
 import com.capgemini.wsb.fitnesstracker.mail.api.EmailSenderService;
 import com.capgemini.wsb.fitnesstracker.training.internal.TrainingRepository;
 import com.capgemini.wsb.fitnesstracker.user.api.User;
-import com.capgemini.wsb.fitnesstracker.user.internal.UserRepository;
+import com.capgemini.wsb.fitnesstracker.user.api.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
