@@ -1,9 +1,7 @@
-package com.capgemini.wsb.fitnesstracker.user.internal;
+package com.capgemini.wsb.fitnesstracker.user.api;
 
 import com.capgemini.wsb.fitnesstracker.user.api.User;
 import com.capgemini.wsb.fitnesstracker.user.api.UserDto;
-import org.springframework.stereotype.Component;
-
 import org.springframework.stereotype.Component;
 
 @Component

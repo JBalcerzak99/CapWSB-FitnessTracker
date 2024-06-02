@@ -12,7 +12,7 @@ public class TrainingNotFoundException extends NotFoundException {
         super(message);
     }
 
-    public TrainingNotFoundException(Long id) {
+    public TrainingNotFoundException() {
         this("Training with ID=%s was not found".formatted(id));
     }
 
