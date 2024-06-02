@@ -13,6 +13,11 @@ public interface UserService {
     List<UserDto> searchUsersByAge(Integer age);
     UserDto createUser(UserDto userDto);
     UserDto updateUser(Long id, UserDto userDto);
+
+    com.capgemini.wsb.fitnesstracker.user.internal.UserDto createUser(com.capgemini.wsb.fitnesstracker.user.internal.UserDto userDto);
+
+    com.capgemini.wsb.fitnesstracker.user.internal.UserDto updateUser(Long id, com.capgemini.wsb.fitnesstracker.user.internal.UserDto userDto);
+
     void deleteUser(Long id);
 }
 

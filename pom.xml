@@ -6,7 +6,7 @@
 
     <groupId>com.capgemini.wsb</groupId>
     <artifactId>CapWSB-FitnessTracker-70128</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
